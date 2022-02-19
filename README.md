@@ -3,7 +3,7 @@
 ### The Labs Repository
 
 This repository is the basis for ENGN2219/COMP6719 lab exercises.
-In [Lab 1](src/comp1110/lab1/README.md), you will [**fork**](http://docs.gitlab.com/ee/gitlab-basics/fork-project.html) your own copy of this repository, which you will use for the remainder of the semester.
+In [Lab 1](./lab1), you will [**fork**](http://docs.gitlab.com/ee/gitlab-basics/fork-project.html) your own copy of this repository, which you will use for the remainder of the semester.
 
 ### Lab Exercises
 
