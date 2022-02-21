@@ -1,0 +1,19 @@
+image: benjamingray/engn2219-2022-s1-labs
+
+variables:
+  GIT_DEPTH: 1
+
+stages:
+  - test
+
+lab1:
+  tags:
+    - engn2219
+  stage: test
+  script:
+    - /scripts/test.py lab1/2_to_1_mux.dig --run-internal-tests
+    - /scripts/test.py lab1/shift.dig --run-internal-tests
+    - /scripts/test.py lab1/2_to_1_wide_mux.dig --run-internal-tests
+    - /scripts/test.py lab1/4_to_1_mux.dig --run-internal-tests
+    - /scripts/test.py lab1/4_to_1_wide_mux.dig --run-internal-tests
+    - /scripts/test.py --extension lab1/mux_emulate_xor.dig --run-internal-tests
