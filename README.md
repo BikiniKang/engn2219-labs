@@ -11,3 +11,4 @@ Doing this properly is important for the assignments. Ask your tutor during your
 ### Lab Exercises
 
 * [Lab 1: Introduction](./lab1)
+* [Lab 2: ALU](./lab2)

@@ -17,3 +17,14 @@ lab1:
     - /scripts/test.py lab1/4_to_1_mux.dig --run-internal-tests
     - /scripts/test.py lab1/4_to_1_wide_mux.dig --run-internal-tests
     - /scripts/test.py --extension lab1/mux_emulate_xor.dig --run-internal-tests
+
+lab2:
+  tags:
+    - engn2219
+  stage: test
+  script:
+    - /scripts/test.py lab2/and.dig --tests /data/lab2/and.test.dig
+    - /scripts/test.py lab2/half-adder.dig --tests /data/lab2/half-adder.test.dig
+    - /scripts/test.py lab2/full-adder.dig --tests /data/lab2/full-adder.test.dig
+    - /scripts/test.py lab2/adder-subtracter.dig --tests /data/lab2/adder-subtracter.test.dig
+    - /scripts/test.py lab2/alu.dig --tests /data/lab2/alu.test.dig
