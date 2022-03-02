@@ -1,6 +1,7 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <circuit>
   <version>1</version>
+  <attributes/>
   <visualElements>
     <visualElement>
       <elementName>Testcase</elementName>
@@ -24,7 +25,7 @@ end loop</dataString>
           </testData>
         </entry>
       </elementAttributes>
-      <pos x="0" y="0" />
+      <pos x="0" y="0"/>
     </visualElement>
     <visualElement>
       <elementName>In</elementName>
@@ -42,7 +43,7 @@ end loop</dataString>
           <int>4</int>
         </entry>
       </elementAttributes>
-      <pos x="300" y="0" />
+      <pos x="300" y="0"/>
     </visualElement>
     <visualElement>
       <elementName>In</elementName>
@@ -60,7 +61,7 @@ end loop</dataString>
           <int>4</int>
         </entry>
       </elementAttributes>
-      <pos x="300" y="100" />
+      <pos x="300" y="100"/>
     </visualElement>
     <visualElement>
       <elementName>Out</elementName>
@@ -78,23 +79,44 @@ end loop</dataString>
           <int>4</int>
         </entry>
       </elementAttributes>
-      <pos x="600" y="0" />
+      <pos x="600" y="0"/>
     </visualElement>
     <visualElement>
-      <elementName>NotConnected</elementName>
+      <elementName>And</elementName>
       <elementAttributes>
         <entry>
           <string>Bits</string>
           <int>4</int>
         </entry>
+        <entry>
+          <string>wideShape</string>
+          <boolean>true</boolean>
+        </entry>
       </elementAttributes>
-      <pos x="580" y="0" />
+      <pos x="400" y="-20"/>
     </visualElement>
   </visualElements>
   <wires>
     <wire>
-      <p1 x="600" y="0" />
-      <p2 x="580" y="0" />
+      <p1 x="480" y="0"/>
+      <p2 x="600" y="0"/>
+    </wire>
+    <wire>
+      <p1 x="300" y="-20"/>
+      <p2 x="400" y="-20"/>
+    </wire>
+    <wire>
+      <p1 x="300" y="100"/>
+      <p2 x="400" y="100"/>
+    </wire>
+    <wire>
+      <p1 x="400" y="20"/>
+      <p2 x="400" y="100"/>
+    </wire>
+    <wire>
+      <p1 x="300" y="-20"/>
+      <p2 x="300" y="0"/>
     </wire>
   </wires>
+  <measurementOrdering/>
 </circuit>

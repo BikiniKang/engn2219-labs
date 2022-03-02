@@ -1,6 +1,7 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <circuit>
   <version>1</version>
+  <attributes/>
   <visualElements>
     <visualElement>
       <elementName>Testcase</elementName>
@@ -24,7 +25,7 @@
           </testData>
         </entry>
       </elementAttributes>
-      <pos x="0" y="0" />
+      <pos x="0" y="0"/>
     </visualElement>
     <visualElement>
       <elementName>In</elementName>
@@ -38,7 +39,7 @@
           <string>A</string>
         </entry>
       </elementAttributes>
-      <pos x="300" y="0" />
+      <pos x="300" y="0"/>
     </visualElement>
     <visualElement>
       <elementName>In</elementName>
@@ -52,7 +53,7 @@
           <string>B</string>
         </entry>
       </elementAttributes>
-      <pos x="300" y="100" />
+      <pos x="300" y="100"/>
     </visualElement>
     <visualElement>
       <elementName>In</elementName>
@@ -66,7 +67,7 @@
           <string>C_IN</string>
         </entry>
       </elementAttributes>
-      <pos x="300" y="200" />
+      <pos x="300" y="200"/>
     </visualElement>
     <visualElement>
       <elementName>Out</elementName>
@@ -80,17 +81,7 @@
           <string>Q</string>
         </entry>
       </elementAttributes>
-      <pos x="600" y="0" />
-    </visualElement>
-    <visualElement>
-      <elementName>NotConnected</elementName>
-      <elementAttributes>
-        <entry>
-          <string>Bits</string>
-          <int>1</int>
-        </entry>
-      </elementAttributes>
-      <pos x="580" y="0" />
+      <pos x="600" y="0"/>
     </visualElement>
     <visualElement>
       <elementName>Out</elementName>
@@ -104,27 +95,102 @@
           <string>C_OUT</string>
         </entry>
       </elementAttributes>
-      <pos x="600" y="100" />
+      <pos x="600" y="100"/>
     </visualElement>
     <visualElement>
-      <elementName>NotConnected</elementName>
+      <elementName>half-adder.dig</elementName>
+      <elementAttributes/>
+      <pos x="320" y="20"/>
+    </visualElement>
+    <visualElement>
+      <elementName>half-adder.dig</elementName>
+      <elementAttributes/>
+      <pos x="400" y="140"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Or</elementName>
       <elementAttributes>
         <entry>
-          <string>Bits</string>
-          <int>1</int>
+          <string>wideShape</string>
+          <boolean>true</boolean>
         </entry>
       </elementAttributes>
-      <pos x="580" y="100" />
+      <pos x="520" y="180"/>
     </visualElement>
   </visualElements>
   <wires>
     <wire>
-      <p1 x="600" y="0" />
-      <p2 x="580" y="0" />
+      <p1 x="520" y="0"/>
+      <p2 x="600" y="0"/>
     </wire>
     <wire>
-      <p1 x="600" y="100" />
-      <p2 x="580" y="100" />
+      <p1 x="460" y="160"/>
+      <p2 x="480" y="160"/>
+    </wire>
+    <wire>
+      <p1 x="300" y="20"/>
+      <p2 x="320" y="20"/>
+    </wire>
+    <wire>
+      <p1 x="380" y="20"/>
+      <p2 x="400" y="20"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="180"/>
+      <p2 x="520" y="180"/>
+    </wire>
+    <wire>
+      <p1 x="300" y="40"/>
+      <p2 x="320" y="40"/>
+    </wire>
+    <wire>
+      <p1 x="380" y="40"/>
+      <p2 x="500" y="40"/>
+    </wire>
+    <wire>
+      <p1 x="300" y="200"/>
+      <p2 x="400" y="200"/>
+    </wire>
+    <wire>
+      <p1 x="460" y="140"/>
+      <p2 x="520" y="140"/>
+    </wire>
+    <wire>
+      <p1 x="480" y="220"/>
+      <p2 x="520" y="220"/>
+    </wire>
+    <wire>
+      <p1 x="400" y="160"/>
+      <p2 x="400" y="200"/>
+    </wire>
+    <wire>
+      <p1 x="400" y="20"/>
+      <p2 x="400" y="140"/>
+    </wire>
+    <wire>
+      <p1 x="480" y="160"/>
+      <p2 x="480" y="220"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="40"/>
+      <p2 x="500" y="180"/>
+    </wire>
+    <wire>
+      <p1 x="520" y="0"/>
+      <p2 x="520" y="140"/>
+    </wire>
+    <wire>
+      <p1 x="600" y="100"/>
+      <p2 x="600" y="200"/>
+    </wire>
+    <wire>
+      <p1 x="300" y="0"/>
+      <p2 x="300" y="20"/>
+    </wire>
+    <wire>
+      <p1 x="300" y="40"/>
+      <p2 x="300" y="100"/>
     </wire>
   </wires>
+  <measurementOrdering/>
 </circuit>
