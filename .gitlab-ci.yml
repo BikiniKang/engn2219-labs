@@ -1,4 +1,4 @@
-image: benjamingray/engn2219-2022-s1-labs:lab2
+image: benjamingray/engn2219-2022-s1-labs:lab3
 
 variables:
   GIT_DEPTH: 1
@@ -29,3 +29,16 @@ lab2:
     - /scripts/test.py lab2/ripple-carry-adder.dig --tests /data/lab2/ripple-carry-adder.test.dig
     - /scripts/test.py lab2/adder-subtracter.dig --tests /data/lab2/adder-subtracter.test.dig
     - /scripts/test.py lab2/alu.dig --tests /data/lab2/alu.test.dig
+
+lab3:
+  tags:
+    - engn2219
+  stage: test
+  script:
+    - /scripts/test.py lab3/sr_latch.dig --tests /data/lab3/sr_latch.test.dig
+    - /scripts/test.py lab3/d_latch.dig --tests /data/lab3/d_latch.test.dig
+    - /scripts/test.py lab3/d_flipflop.dig --tests /data/lab3/d_flipflop.test.dig
+    - /scripts/test.py lab3/d_flipflop_with_en.dig --tests /data/lab3/d_flipflop_with_en.test.dig
+    - /scripts/test.py lab3/counter.dig --tests /data/lab3/counter.test.dig
+    - /scripts/test.py lab3/counter.dig --run-internal-tests
+    - /scripts/test.py lab3/reg_file.dig --tests /data/lab3/reg_file.test.dig
