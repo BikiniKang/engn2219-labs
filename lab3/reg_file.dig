@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <version>1</version>
+  <attributes/>
+  <visualElements>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>clk RS1 RS2 WS WE IN OUT1 OUT2
+c 0 0 0 1 0x1234 0x1234 0x1234
+c 1 0 1 1 0xBEEF 0xBEEF 0x1234
+c 2 1 2 1 0xDEAD 0xDEAD 0xBEEF
+c 3 2 3 1 0xFFFF 0xFFFF 0xDEAD
+c 3 2 3 0 0xABCD 0xFFFF 0xDEAD
+c 3 2 2 0 0xABCD 0xFFFF 0xDEAD
+c 1 0 1 0 0xABCD 0xBEEF 0x1234
+c 1 0 0 0 0xABCD 0xBEEF 0x1234
+c 1 0 2 1 0xBADE 0xBEEF 0x1234
+c 0 2 2 1 0xBADE 0x1234 0xBADE
+c 0 0 2 0 0x1234 0x1234 0x1234
+c 2 3 0 1 0x0000 0xBADE 0xFFFF
+c 0 0 2 0 0x1234 0x0000 0x0000</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="560" y="-140"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>The index of the register which should output its value to OUT1.</string>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>RS1</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>3</int>
+        </entry>
+      </elementAttributes>
+      <pos x="640" y="0"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>The index of the register which should output its value to OUT2.</string>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>RS2</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>3</int>
+        </entry>
+      </elementAttributes>
+      <pos x="640" y="40"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>The index of the register which should save the value on IN on the next clock cycle (if WE is high).</string>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>WS</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>3</int>
+        </entry>
+      </elementAttributes>
+      <pos x="640" y="120"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>Whether the register selected by WS should save the value from IN on the next cycle.</string>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>WE</string>
+        </entry>
+      </elementAttributes>
+      <pos x="640" y="80"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>The value to be saved into the register specified by WS if WE is high,</string>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>IN</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="640" y="160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>The value in the register specified by RS1.</string>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>OUT1</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="820" y="-40"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>The value in the register specified by RS2.</string>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>OUT2</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="820" y="0"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Clock</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>clk</string>
+        </entry>
+      </elementAttributes>
+      <pos x="640" y="-40"/>
+    </visualElement>
+    <visualElement>
+      <elementName>NotConnected</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="800" y="-40"/>
+    </visualElement>
+    <visualElement>
+      <elementName>NotConnected</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="800" y="0"/>
+    </visualElement>
+  </visualElements>
+  <wires>
+    <wire>
+      <p1 x="800" y="0"/>
+      <p2 x="820" y="0"/>
+    </wire>
+    <wire>
+      <p1 x="800" y="-40"/>
+      <p2 x="820" y="-40"/>
+    </wire>
+  </wires>
+  <measurementOrdering/>
+</circuit>
