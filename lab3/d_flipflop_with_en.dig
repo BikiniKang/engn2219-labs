@@ -48,7 +48,7 @@
           <string>Q</string>
         </entry>
       </elementAttributes>
-      <pos x="500" y="160"/>
+      <pos x="700" y="320"/>
     </visualElement>
     <visualElement>
       <elementName>Clock</elementName>
@@ -58,7 +58,7 @@
           <string>clk</string>
         </entry>
       </elementAttributes>
-      <pos x="360" y="160"/>
+      <pos x="480" y="200"/>
     </visualElement>
     <visualElement>
       <elementName>In</elementName>
@@ -68,28 +68,86 @@
           <string>D</string>
         </entry>
       </elementAttributes>
-      <pos x="360" y="200"/>
+      <pos x="440" y="360"/>
     </visualElement>
     <visualElement>
       <elementName>In</elementName>
       <elementAttributes>
         <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
           <string>Label</string>
           <string>en</string>
         </entry>
       </elementAttributes>
-      <pos x="360" y="240"/>
+      <pos x="500" y="280"/>
     </visualElement>
     <visualElement>
-      <elementName>NotConnected</elementName>
+      <elementName>Multiplexer</elementName>
+      <elementAttributes>
+        <entry>
+          <string>flipSelPos</string>
+          <boolean>true</boolean>
+        </entry>
+      </elementAttributes>
+      <pos x="480" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>d_flipflop.dig</elementName>
       <elementAttributes/>
-      <pos x="480" y="160"/>
+      <pos x="560" y="300"/>
     </visualElement>
   </visualElements>
   <wires>
     <wire>
-      <p1 x="480" y="160"/>
-      <p2 x="500" y="160"/>
+      <p1 x="620" y="320"/>
+      <p2 x="680" y="320"/>
+    </wire>
+    <wire>
+      <p1 x="360" y="320"/>
+      <p2 x="480" y="320"/>
+    </wire>
+    <wire>
+      <p1 x="680" y="320"/>
+      <p2 x="700" y="320"/>
+    </wire>
+    <wire>
+      <p1 x="360" y="400"/>
+      <p2 x="680" y="400"/>
+    </wire>
+    <wire>
+      <p1 x="520" y="340"/>
+      <p2 x="560" y="340"/>
+    </wire>
+    <wire>
+      <p1 x="480" y="200"/>
+      <p2 x="540" y="200"/>
+    </wire>
+    <wire>
+      <p1 x="440" y="360"/>
+      <p2 x="480" y="360"/>
+    </wire>
+    <wire>
+      <p1 x="540" y="300"/>
+      <p2 x="560" y="300"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="280"/>
+      <p2 x="500" y="320"/>
+    </wire>
+    <wire>
+      <p1 x="360" y="320"/>
+      <p2 x="360" y="400"/>
+    </wire>
+    <wire>
+      <p1 x="680" y="320"/>
+      <p2 x="680" y="400"/>
+    </wire>
+    <wire>
+      <p1 x="540" y="200"/>
+      <p2 x="540" y="300"/>
     </wire>
   </wires>
   <measurementOrdering/>
