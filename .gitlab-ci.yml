@@ -1,4 +1,4 @@
-image: benjamingray/engn2219-2022-s1-labs:lab4
+image: benjamingray/engn2219-2022-s1-labs:lab5
 
 variables:
   GIT_DEPTH: 1
@@ -50,3 +50,10 @@ lab4:
   script:
     - /scripts/test.py lab4/calc.dig --run-internal-tests
     - /scripts/test.py lab4/manual_cpu.dig --tests /data/lab4/manual_cpu.test.dig
+
+lab5:
+  tags:
+    - engn2219
+  stage: test
+  script:
+    - /scripts/test.py lab5/calc.dig --tests /data/lab5/control_unit.test.dig

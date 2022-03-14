@@ -14,3 +14,4 @@ Doing this properly is important for the assignments. Ask your tutor during your
 * [Lab 2: ALU](./lab2)
 * [Lab 3: Registers](./lab3)
 * [Lab 4: Manual CPU](./lab4)
+* [Lab 5: Automatic CPU](./lab5)
