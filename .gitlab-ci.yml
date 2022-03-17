@@ -56,4 +56,4 @@ lab5:
     - engn2219
   stage: test
   script:
-    - /scripts/test.py lab5/calc.dig --tests /data/lab5/control_unit.test.dig
+    - /scripts/test.py lab5/control_unit.dig --tests /data/lab5/control_unit.test.dig
