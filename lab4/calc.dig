@@ -19,7 +19,7 @@
           <int>3</int>
         </entry>
       </elementAttributes>
-      <pos x="80" y="520"/>
+      <pos x="80" y="480"/>
     </visualElement>
     <visualElement>
       <elementName>In</elementName>
@@ -37,7 +37,7 @@
           <int>3</int>
         </entry>
       </elementAttributes>
-      <pos x="140" y="520"/>
+      <pos x="140" y="480"/>
     </visualElement>
     <visualElement>
       <elementName>In</elementName>
@@ -55,7 +55,7 @@
           <int>3</int>
         </entry>
       </elementAttributes>
-      <pos x="200" y="520"/>
+      <pos x="200" y="480"/>
     </visualElement>
     <visualElement>
       <elementName>In</elementName>
@@ -69,7 +69,7 @@
           <string>WE</string>
         </entry>
       </elementAttributes>
-      <pos x="260" y="520"/>
+      <pos x="260" y="480"/>
     </visualElement>
     <visualElement>
       <elementName>Clock</elementName>
@@ -79,14 +79,14 @@
           <string>CLK</string>
         </entry>
       </elementAttributes>
-      <pos x="-100" y="360"/>
+      <pos x="-80" y="320"/>
     </visualElement>
     <visualElement>
       <elementName>In</elementName>
       <elementAttributes>
         <entry>
           <string>rotation</string>
-          <rotation rotation="1"/>
+          <rotation rotation="3"/>
         </entry>
         <entry>
           <string>Label</string>
@@ -97,7 +97,7 @@
           <int>2</int>
         </entry>
       </elementAttributes>
-      <pos x="20" y="520"/>
+      <pos x="500" y="80"/>
     </visualElement>
     <visualElement>
       <elementName>Testcase</elementName>
@@ -124,17 +124,190 @@ init R1=1;
 init R2=3;
 init R3=0xF;
 
-# 0   0    0   0   0  0      1  3  0xF 0       #ensure registers initalised correctly
-# C   ?    ?   ?   ?  ?      1  3  0xF 0       #do nothing
-# C   ?    ?   ?   ?  ?      x  x  x   0x10    #R4 = 0x10
-# C   ?    ?   ?   ?  ?      x  x  x   0xC     #R4 = 0xC
-# C   ?    ?   ?   ?  ?      x  x  x   0xFFFF  #R4 = 0xFFFF</dataString>
+0   0    0   0   0  0      1  3  0xF 0       #ensure registers initalised correctly
+C   x    x   x   x  0      1  3  0xF 0       #do nothing
+C   0    1   3   4  1      x  x  x   0x10    #R4 = 0x10
+C   1    3   2   4  1      x  x  x   0xC     #R4 = 0xC
+C   1    0   1   4  1      x  x  x   0xFFFF  #R4 = 0xFFFF</dataString>
           </testData>
         </entry>
       </elementAttributes>
-      <pos x="-160" y="180"/>
+      <pos x="-160" y="460"/>
+    </visualElement>
+    <visualElement>
+      <elementName>reg_file.dig</elementName>
+      <elementAttributes>
+        <entry>
+          <string>shapeType</string>
+          <shapeType>LAYOUT</shapeType>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>Register File</string>
+        </entry>
+      </elementAttributes>
+      <pos x="20" y="120"/>
+    </visualElement>
+    <visualElement>
+      <elementName>alu.dig</elementName>
+      <elementAttributes>
+        <entry>
+          <string>shapeType</string>
+          <shapeType>LAYOUT</shapeType>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>ALU</string>
+        </entry>
+      </elementAttributes>
+      <pos x="400" y="120"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Probe</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>RESULT</string>
+        </entry>
+      </elementAttributes>
+      <pos x="680" y="260"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Splitter</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Input Splitting</string>
+          <string>4</string>
+        </entry>
+        <entry>
+          <string>splitterSpreading</string>
+          <int>2</int>
+        </entry>
+        <entry>
+          <string>Output Splitting</string>
+          <string>1,1,1,1</string>
+        </entry>
+      </elementAttributes>
+      <pos x="500" y="500"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>Z</string>
+        </entry>
+      </elementAttributes>
+      <pos x="560" y="500"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>N</string>
+        </entry>
+      </elementAttributes>
+      <pos x="560" y="540"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>C</string>
+        </entry>
+      </elementAttributes>
+      <pos x="560" y="580"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>V</string>
+        </entry>
+      </elementAttributes>
+      <pos x="560" y="620"/>
     </visualElement>
   </visualElements>
-  <wires/>
+  <wires>
+    <wire>
+      <p1 x="-80" y="320"/>
+      <p2 x="20" y="320"/>
+    </wire>
+    <wire>
+      <p1 x="320" y="320"/>
+      <p2 x="400" y="320"/>
+    </wire>
+    <wire>
+      <p1 x="600" y="260"/>
+      <p2 x="640" y="260"/>
+    </wire>
+    <wire>
+      <p1 x="640" y="260"/>
+      <p2 x="680" y="260"/>
+    </wire>
+    <wire>
+      <p1 x="520" y="500"/>
+      <p2 x="560" y="500"/>
+    </wire>
+    <wire>
+      <p1 x="520" y="580"/>
+      <p2 x="560" y="580"/>
+    </wire>
+    <wire>
+      <p1 x="320" y="220"/>
+      <p2 x="400" y="220"/>
+    </wire>
+    <wire>
+      <p1 x="-80" y="220"/>
+      <p2 x="20" y="220"/>
+    </wire>
+    <wire>
+      <p1 x="520" y="540"/>
+      <p2 x="560" y="540"/>
+    </wire>
+    <wire>
+      <p1 x="520" y="620"/>
+      <p2 x="560" y="620"/>
+    </wire>
+    <wire>
+      <p1 x="-80" y="-80"/>
+      <p2 x="640" y="-80"/>
+    </wire>
+    <wire>
+      <p1 x="80" y="420"/>
+      <p2 x="80" y="480"/>
+    </wire>
+    <wire>
+      <p1 x="640" y="-80"/>
+      <p2 x="640" y="260"/>
+    </wire>
+    <wire>
+      <p1 x="260" y="420"/>
+      <p2 x="260" y="480"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="80"/>
+      <p2 x="500" y="120"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="420"/>
+      <p2 x="500" y="500"/>
+    </wire>
+    <wire>
+      <p1 x="200" y="420"/>
+      <p2 x="200" y="480"/>
+    </wire>
+    <wire>
+      <p1 x="140" y="420"/>
+      <p2 x="140" y="480"/>
+    </wire>
+    <wire>
+      <p1 x="-80" y="-80"/>
+      <p2 x="-80" y="220"/>
+    </wire>
+  </wires>
   <measurementOrdering/>
 </circuit>
