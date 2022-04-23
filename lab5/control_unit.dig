@@ -57,7 +57,7 @@
           <int>2</int>
         </entry>
       </elementAttributes>
-      <pos x="740" y="1060"/>
+      <pos x="740" y="1100"/>
     </visualElement>
     <visualElement>
       <elementName>Out</elementName>
@@ -162,7 +162,7 @@
         </entry>
         <entry>
           <string>Description</string>
-          <string>Z</string>
+          <string>z</string>
         </entry>
       </elementAttributes>
       <pos x="-200" y="20"/>
@@ -233,7 +233,7 @@ end loop
           <string>SETH</string>
         </entry>
       </elementAttributes>
-      <pos x="740" y="980"/>
+      <pos x="1240" y="1000"/>
     </visualElement>
     <visualElement>
       <elementName>Testcase</elementName>
@@ -351,27 +351,42 @@ end loop
         <entry>
           <string>Testdata</string>
           <testData>
-            <dataString>	INST                                    STR 
+            <dataString>Z	INST                                    STR 
 
 let aluop  = 0b1000;
 let ldrop  = 0b0101;
 let strop  = 0b0100;
 let movlop = 0b0000;
+let sethop = 0b0001;
 
 loop(rd, 1&lt;&lt;3)
 loop(ra, 1&lt;&lt;3)
 loop(rb, 1&lt;&lt;3)
 
 loop(i, 4)
-	((aluop+i)&lt;&lt;12 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 0  #test add/sub/and/orr
+	(0)((aluop+i)&lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 0    #test add/sub/and/orr
+	(1)((aluop+i)&lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 0    #test add/sub/and/orr
+        (0)((aluop+i)&lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 0    #test add/sub/and/orr
+        (1)((aluop+i)&lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 0    #test add/sub/and/orr
 end loop
 
-	(ldrop    &lt;&lt;12 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0  #test ldr
-	(strop    &lt;&lt;12 | rd&lt;&lt;8 | ra&lt;&lt;4 )        1  #test str
-	
+	(0)(ldrop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test ldr
+	(1)(ldrop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test ldr
+	(0)(ldrop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test ldr
+	(1)(ldrop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test ldr
+	(0)(strop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        1    #test str
+	(1)(strop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        1    #test str
+	(0)(strop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test str
+	(1)(strop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        1    #test str
 	let imm = random(256);
-	(movlop   &lt;&lt;12 | rd&lt;&lt;8 | imm )          0  #test movl
-
+	(0)(movlop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test movl
+	(1)(movlop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test movl
+	(0)(movlop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test movl
+	(1)(movlop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test movl
+	(0)(sethop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test seth
+	(1)(sethop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test seth
+	(0)(sethop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test seth
+	(1)(sethop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test seth
 end loop
 end loop
 end loop
@@ -391,27 +406,42 @@ end loop
         <entry>
           <string>Testdata</string>
           <testData>
-            <dataString>	INST                                    WE  
+            <dataString>Z	INST                                    WE 
 
 let aluop  = 0b1000;
 let ldrop  = 0b0101;
 let strop  = 0b0100;
 let movlop = 0b0000;
+let sethop = 0b0001;
 
 loop(rd, 1&lt;&lt;3)
 loop(ra, 1&lt;&lt;3)
 loop(rb, 1&lt;&lt;3)
 
 loop(i, 4)
-	((aluop+i)&lt;&lt;12 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 1  #test add/sub/and/orr
+	(0)((aluop+i)&lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 1    #test add/sub/and/orr
+	(1)((aluop+i)&lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 1    #test add/sub/and/orr
+        (0)((aluop+i)&lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 0    #test add/sub/and/orr
+        (1)((aluop+i)&lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 1    #test add/sub/and/orr
 end loop
 
-	(ldrop    &lt;&lt;12 | rd&lt;&lt;8 | ra&lt;&lt;4 )        1  #test ldr
-	(strop    &lt;&lt;12 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0  #test str
-	
+	(0)(ldrop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        1    #test ldr
+	(1)(ldrop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        1    #test ldr
+	(0)(ldrop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test ldr
+	(1)(ldrop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        1    #test ldr
+	(0)(strop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test str
+	(1)(strop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test str
+	(0)(strop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test str
+	(1)(strop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test str
 	let imm = random(256);
-	(movlop   &lt;&lt;12 | rd&lt;&lt;8 | imm )          1  #test movl
-
+	(0)(movlop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          1    #test movl
+	(1)(movlop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          1    #test movl
+	(0)(movlop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test movl
+	(1)(movlop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          1    #test movl
+	(0)(sethop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          1    #test seth
+	(1)(sethop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          1    #test seth
+	(0)(sethop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test seth
+	(1)(sethop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          1    #test seth
 end loop
 end loop
 end loop
@@ -431,27 +461,42 @@ end loop
         <entry>
           <string>Testdata</string>
           <testData>
-            <dataString>	INST                                    LDR 
+            <dataString>Z	INST                                    LDR 
 
 let aluop  = 0b1000;
 let ldrop  = 0b0101;
 let strop  = 0b0100;
 let movlop = 0b0000;
+let sethop = 0b0001;
 
 loop(rd, 1&lt;&lt;3)
 loop(ra, 1&lt;&lt;3)
 loop(rb, 1&lt;&lt;3)
 
 loop(i, 4)
-	((aluop+i)&lt;&lt;12 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) X    #test add/sub/and/orr
+	(0)((aluop+i)&lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 0    #test add/sub/and/orr
+	(1)((aluop+i)&lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 0    #test add/sub/and/orr
+        (0)((aluop+i)&lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 0    #test add/sub/and/orr
+        (1)((aluop+i)&lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 0    #test add/sub/and/orr
 end loop
 
-	(ldrop    &lt;&lt;12 | rd&lt;&lt;8 | ra&lt;&lt;4 )        1    #test ldr
-	(strop    &lt;&lt;12 | rd&lt;&lt;8 | ra&lt;&lt;4 )        X    #test str
-	
+	(0)(ldrop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        1    #test ldr
+	(1)(ldrop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        1    #test ldr
+	(0)(ldrop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test ldr
+	(1)(ldrop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        1    #test ldr
+	(0)(strop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test str
+	(1)(strop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test str
+	(0)(strop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test str
+	(1)(strop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test str
 	let imm = random(256);
-	(movlop   &lt;&lt;12 | rd&lt;&lt;8 | imm )          X    #test movl
-
+	(0)(movlop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test movl
+	(1)(movlop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test movl
+	(0)(movlop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test movl
+	(1)(movlop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test movl
+	(0)(sethop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test seth
+	(1)(sethop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test seth
+	(0)(sethop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test seth
+	(1)(sethop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test seth
 end loop
 end loop
 end loop
@@ -498,7 +543,7 @@ end loop
           </testData>
         </entry>
       </elementAttributes>
-      <pos x="860" y="1040"/>
+      <pos x="860" y="1080"/>
     </visualElement>
     <visualElement>
       <elementName>Testcase</elementName>
@@ -516,6 +561,7 @@ let aluop  = 0b1000;
 let ldrop  = 0b0101;
 let strop  = 0b0100;
 let movlop = 0b0000;
+let sethop = 0b0001;
 
 loop(rd, 1&lt;&lt;3)
 loop(ra, 1&lt;&lt;3)
@@ -530,7 +576,7 @@ end loop
 	
 	let imm = random(256);
 	(movlop   &lt;&lt;12 | rd&lt;&lt;8 | imm )          (rd)  #test movl
-
+	(sethop   &lt;&lt;12 | rd&lt;&lt;8 | imm )          (rd)  #test seth
 end loop
 end loop
 end loop
@@ -700,7 +746,7 @@ end loop
           <string>2</string>
         </entry>
       </elementAttributes>
-      <pos x="660" y="1060"/>
+      <pos x="660" y="1100"/>
     </visualElement>
     <visualElement>
       <elementName>Multiplexer</elementName>
@@ -718,62 +764,62 @@ end loop
           <boolean>true</boolean>
         </entry>
       </elementAttributes>
-      <pos x="-60" y="1180"/>
+      <pos x="-60" y="1220"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="-60" y="1200"/>
+      <pos x="-60" y="1240"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="-40" y="1200"/>
+      <pos x="-40" y="1240"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="-20" y="1200"/>
+      <pos x="-20" y="1240"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="0" y="1200"/>
+      <pos x="0" y="1240"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="20" y="1200"/>
+      <pos x="20" y="1240"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="60" y="1200"/>
+      <pos x="60" y="1240"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="80" y="1200"/>
+      <pos x="80" y="1240"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="240" y="1200"/>
+      <pos x="240" y="1240"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="220" y="1200"/>
+      <pos x="220" y="1240"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="200" y="1200"/>
+      <pos x="200" y="1240"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="180" y="1200"/>
+      <pos x="180" y="1240"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
@@ -783,7 +829,7 @@ end loop
           <long>0</long>
         </entry>
       </elementAttributes>
-      <pos x="40" y="1200"/>
+      <pos x="40" y="1240"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
@@ -793,7 +839,7 @@ end loop
           <long>0</long>
         </entry>
       </elementAttributes>
-      <pos x="100" y="1200"/>
+      <pos x="100" y="1240"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
@@ -803,7 +849,7 @@ end loop
           <long>0</long>
         </entry>
       </elementAttributes>
-      <pos x="120" y="1200"/>
+      <pos x="120" y="1240"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
@@ -813,7 +859,7 @@ end loop
           <long>0</long>
         </entry>
       </elementAttributes>
-      <pos x="140" y="1200"/>
+      <pos x="140" y="1240"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
@@ -823,7 +869,7 @@ end loop
           <long>0</long>
         </entry>
       </elementAttributes>
-      <pos x="160" y="1200"/>
+      <pos x="160" y="1240"/>
     </visualElement>
     <visualElement>
       <elementName>Multiplexer</elementName>
@@ -841,7 +887,7 @@ end loop
           <boolean>true</boolean>
         </entry>
       </elementAttributes>
-      <pos x="-60" y="1080"/>
+      <pos x="-60" y="1120"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
@@ -851,62 +897,62 @@ end loop
           <long>0</long>
         </entry>
       </elementAttributes>
-      <pos x="-60" y="1100"/>
+      <pos x="-60" y="1140"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="-40" y="1100"/>
+      <pos x="-40" y="1140"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="-20" y="1100"/>
+      <pos x="-20" y="1140"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="0" y="1100"/>
+      <pos x="0" y="1140"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="20" y="1100"/>
+      <pos x="20" y="1140"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="60" y="1100"/>
+      <pos x="60" y="1140"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="80" y="1100"/>
+      <pos x="80" y="1140"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="240" y="1100"/>
+      <pos x="240" y="1140"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="220" y="1100"/>
+      <pos x="220" y="1140"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="200" y="1100"/>
+      <pos x="200" y="1140"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="180" y="1100"/>
+      <pos x="180" y="1140"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
       <elementAttributes/>
-      <pos x="40" y="1100"/>
+      <pos x="40" y="1140"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
@@ -916,7 +962,7 @@ end loop
           <long>0</long>
         </entry>
       </elementAttributes>
-      <pos x="100" y="1100"/>
+      <pos x="100" y="1140"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
@@ -926,7 +972,7 @@ end loop
           <long>0</long>
         </entry>
       </elementAttributes>
-      <pos x="120" y="1100"/>
+      <pos x="120" y="1140"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
@@ -936,7 +982,7 @@ end loop
           <long>0</long>
         </entry>
       </elementAttributes>
-      <pos x="140" y="1100"/>
+      <pos x="140" y="1140"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
@@ -946,7 +992,7 @@ end loop
           <long>0</long>
         </entry>
       </elementAttributes>
-      <pos x="160" y="1100"/>
+      <pos x="160" y="1140"/>
     </visualElement>
     <visualElement>
       <elementName>And</elementName>
@@ -978,30 +1024,46 @@ end loop
         <entry>
           <string>Testdata</string>
           <testData>
-            <dataString>	INST                                    FLEN  
+            <dataString>Z	INST                                    FLEN 
 
 let aluop  = 0b1000;
 let ldrop  = 0b0101;
 let strop  = 0b0100;
 let movlop = 0b0000;
+let sethop = 0b0001;
 
 loop(rd, 1&lt;&lt;3)
 loop(ra, 1&lt;&lt;3)
 loop(rb, 1&lt;&lt;3)
 
 loop(i, 4)
-	((aluop+i)&lt;&lt;12 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 1  #test add/sub/and/orr
+	(0)((aluop+i)&lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 1    #test add/sub/and/orr
+	(1)((aluop+i)&lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 1    #test add/sub/and/orr
+        (0)((aluop+i)&lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 0    #test add/sub/and/orr
+        (1)((aluop+i)&lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 1    #test add/sub/and/orr
 end loop
 
-	(ldrop    &lt;&lt;12 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0  #test ldr
-	(strop    &lt;&lt;12 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0  #test str
-	
+	(0)(ldrop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test ldr
+	(1)(ldrop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test ldr
+	(0)(ldrop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test ldr
+	(1)(ldrop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test ldr
+	(0)(strop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test str
+	(1)(strop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test str
+	(0)(strop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test str
+	(1)(strop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test str
 	let imm = random(256);
-	(movlop   &lt;&lt;12 | rd&lt;&lt;8 | imm )          0  #test movl
-
+	(0)(movlop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test movl
+	(1)(movlop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test movl
+	(0)(movlop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test movl
+	(1)(movlop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test movl
+	(0)(sethop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test seth
+	(1)(sethop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test seth
+	(0)(sethop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test seth
+	(1)(sethop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test seth
 end loop
 end loop
-end loop</dataString>
+end loop
+</dataString>
           </testData>
         </entry>
       </elementAttributes>
@@ -1184,7 +1246,7 @@ end loop</dataString>
         <entry>
           <string>Testdata</string>
           <testData>
-            <dataString>	INST                                    SETH  
+            <dataString>Z	INST                                    SETH 
 
 let aluop  = 0b1000;
 let ldrop  = 0b0101;
@@ -1197,23 +1259,47 @@ loop(ra, 1&lt;&lt;3)
 loop(rb, 1&lt;&lt;3)
 
 loop(i, 4)
-	((aluop+i)&lt;&lt;12 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 0  #test add/sub/and/orr
+	(0)((aluop+i)&lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 0    #test add/sub/and/orr
+	(1)((aluop+i)&lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 0    #test add/sub/and/orr
+        (0)((aluop+i)&lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 0    #test add/sub/and/orr
+        (1)((aluop+i)&lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 | rb&lt;&lt;0) 0    #test add/sub/and/orr
 end loop
 
-	(ldrop    &lt;&lt;12 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0  #test ldr
-	(strop    &lt;&lt;12 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0  #test str
-	
+	(0)(ldrop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test ldr
+	(1)(ldrop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test ldr
+	(0)(ldrop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test ldr
+	(1)(ldrop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test ldr
+	(0)(strop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test str
+	(1)(strop    &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test str
+	(0)(strop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test str
+	(1)(strop    &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | ra&lt;&lt;4 )        0    #test str
 	let imm = random(256);
-	(movlop   &lt;&lt;12 | rd&lt;&lt;8 | imm )          0  #test movl
-        (sethop   &lt;&lt;12 | rd&lt;&lt;8 | imm )          1  #test seth
-
+	(0)(movlop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test movl
+	(1)(movlop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test movl
+	(0)(movlop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test movl
+	(1)(movlop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test movl
+	(0)(sethop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          1    #test seth
+	(1)(sethop   &lt;&lt;12 | 0&lt;&lt;11 | rd&lt;&lt;8 | imm )          1    #test seth
+	(0)(sethop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          0    #test seth
+	(1)(sethop   &lt;&lt;12 | 1&lt;&lt;11 | rd&lt;&lt;8 | imm )          1    #test seth
 end loop
 end loop
-end loop</dataString>
+end loop
+</dataString>
           </testData>
         </entry>
       </elementAttributes>
-      <pos x="860" y="940"/>
+      <pos x="1360" y="960"/>
+    </visualElement>
+    <visualElement>
+      <elementName>And</elementName>
+      <elementAttributes>
+        <entry>
+          <string>wideShape</string>
+          <boolean>true</boolean>
+        </entry>
+      </elementAttributes>
+      <pos x="1100" y="980"/>
     </visualElement>
   </visualElements>
   <wires>
@@ -1262,8 +1348,8 @@ end loop</dataString>
       <p2 x="740" y="200"/>
     </wire>
     <wire>
-      <p1 x="-220" y="1160"/>
-      <p2 x="-60" y="1160"/>
+      <p1 x="100" y="1160"/>
+      <p2 x="620" y="1160"/>
     </wire>
     <wire>
       <p1 x="540" y="780"/>
@@ -1276,6 +1362,18 @@ end loop</dataString>
     <wire>
       <p1 x="480" y="460"/>
       <p2 x="500" y="460"/>
+    </wire>
+    <wire>
+      <p1 x="-220" y="1100"/>
+      <p2 x="-60" y="1100"/>
+    </wire>
+    <wire>
+      <p1 x="680" y="1100"/>
+      <p2 x="740" y="1100"/>
+    </wire>
+    <wire>
+      <p1 x="620" y="1100"/>
+      <p2 x="660" y="1100"/>
     </wire>
     <wire>
       <p1 x="1020" y="400"/>
@@ -1298,8 +1396,8 @@ end loop</dataString>
       <p2 x="1240" y="20"/>
     </wire>
     <wire>
-      <p1 x="-80" y="980"/>
-      <p2 x="740" y="980"/>
+      <p1 x="1020" y="980"/>
+      <p2 x="1100" y="980"/>
     </wire>
     <wire>
       <p1 x="-240" y="280"/>
@@ -1350,6 +1448,10 @@ end loop</dataString>
       <p2 x="1100" y="860"/>
     </wire>
     <wire>
+      <p1 x="620" y="1120"/>
+      <p2 x="660" y="1120"/>
+    </wire>
+    <wire>
       <p1 x="40" y="800"/>
       <p2 x="520" y="800"/>
     </wire>
@@ -1362,8 +1464,8 @@ end loop</dataString>
       <p2 x="-20" y="800"/>
     </wire>
     <wire>
-      <p1 x="100" y="1120"/>
-      <p2 x="620" y="1120"/>
+      <p1 x="100" y="1060"/>
+      <p2 x="620" y="1060"/>
     </wire>
     <wire>
       <p1 x="480" y="420"/>
@@ -1372,18 +1474,6 @@ end loop</dataString>
     <wire>
       <p1 x="1180" y="420"/>
       <p2 x="1240" y="420"/>
-    </wire>
-    <wire>
-      <p1 x="-220" y="1060"/>
-      <p2 x="-60" y="1060"/>
-    </wire>
-    <wire>
-      <p1 x="680" y="1060"/>
-      <p2 x="740" y="1060"/>
-    </wire>
-    <wire>
-      <p1 x="620" y="1060"/>
-      <p2 x="660" y="1060"/>
     </wire>
     <wire>
       <p1 x="-300" y="40"/>
@@ -1422,6 +1512,10 @@ end loop</dataString>
       <p2 x="480" y="360"/>
     </wire>
     <wire>
+      <p1 x="1180" y="1000"/>
+      <p2 x="1240" y="1000"/>
+    </wire>
+    <wire>
       <p1 x="640" y="300"/>
       <p2 x="740" y="300"/>
     </wire>
@@ -1432,6 +1526,10 @@ end loop</dataString>
     <wire>
       <p1 x="440" y="620"/>
       <p2 x="500" y="620"/>
+    </wire>
+    <wire>
+      <p1 x="-220" y="1200"/>
+      <p2 x="-60" y="1200"/>
     </wire>
     <wire>
       <p1 x="1020" y="560"/>
@@ -1456,10 +1554,6 @@ end loop</dataString>
     <wire>
       <p1 x="240" y="500"/>
       <p2 x="280" y="500"/>
-    </wire>
-    <wire>
-      <p1 x="620" y="1080"/>
-      <p2 x="660" y="1080"/>
     </wire>
     <wire>
       <p1 x="-160" y="440"/>
@@ -1494,24 +1588,24 @@ end loop</dataString>
       <p2 x="1100" y="700"/>
     </wire>
     <wire>
-      <p1 x="100" y="1020"/>
-      <p2 x="620" y="1020"/>
+      <p1 x="-80" y="1020"/>
+      <p2 x="1100" y="1020"/>
     </wire>
     <wire>
-      <p1 x="0" y="1080"/>
-      <p2 x="0" y="1100"/>
+      <p1 x="0" y="1120"/>
+      <p2 x="0" y="1140"/>
     </wire>
     <wire>
-      <p1 x="0" y="1180"/>
-      <p2 x="0" y="1200"/>
+      <p1 x="0" y="1220"/>
+      <p2 x="0" y="1240"/>
     </wire>
     <wire>
-      <p1 x="200" y="1080"/>
-      <p2 x="200" y="1100"/>
+      <p1 x="200" y="1120"/>
+      <p2 x="200" y="1140"/>
     </wire>
     <wire>
-      <p1 x="200" y="1180"/>
-      <p2 x="200" y="1200"/>
+      <p1 x="200" y="1220"/>
+      <p2 x="200" y="1240"/>
     </wire>
     <wire>
       <p1 x="-140" y="600"/>
@@ -1526,12 +1620,12 @@ end loop</dataString>
       <p2 x="140" y="660"/>
     </wire>
     <wire>
-      <p1 x="140" y="1080"/>
-      <p2 x="140" y="1100"/>
+      <p1 x="140" y="1120"/>
+      <p2 x="140" y="1140"/>
     </wire>
     <wire>
-      <p1 x="140" y="1180"/>
-      <p2 x="140" y="1200"/>
+      <p1 x="140" y="1220"/>
+      <p2 x="140" y="1240"/>
     </wire>
     <wire>
       <p1 x="460" y="120"/>
@@ -1539,39 +1633,39 @@ end loop</dataString>
     </wire>
     <wire>
       <p1 x="-80" y="880"/>
-      <p2 x="-80" y="980"/>
+      <p2 x="-80" y="1020"/>
     </wire>
     <wire>
-      <p1 x="80" y="1080"/>
-      <p2 x="80" y="1100"/>
+      <p1 x="80" y="1120"/>
+      <p2 x="80" y="1140"/>
     </wire>
     <wire>
-      <p1 x="80" y="1180"/>
-      <p2 x="80" y="1200"/>
+      <p1 x="80" y="1220"/>
+      <p2 x="80" y="1240"/>
     </wire>
     <wire>
       <p1 x="-20" y="360"/>
       <p2 x="-20" y="800"/>
     </wire>
     <wire>
-      <p1 x="-20" y="1080"/>
-      <p2 x="-20" y="1100"/>
+      <p1 x="-20" y="1120"/>
+      <p2 x="-20" y="1140"/>
     </wire>
     <wire>
-      <p1 x="-20" y="1180"/>
-      <p2 x="-20" y="1200"/>
+      <p1 x="-20" y="1220"/>
+      <p2 x="-20" y="1240"/>
     </wire>
     <wire>
       <p1 x="20" y="600"/>
       <p2 x="20" y="660"/>
     </wire>
     <wire>
-      <p1 x="20" y="1080"/>
-      <p2 x="20" y="1100"/>
+      <p1 x="20" y="1120"/>
+      <p2 x="20" y="1140"/>
     </wire>
     <wire>
-      <p1 x="20" y="1180"/>
-      <p2 x="20" y="1200"/>
+      <p1 x="20" y="1220"/>
+      <p2 x="20" y="1240"/>
     </wire>
     <wire>
       <p1 x="340" y="360"/>
@@ -1579,23 +1673,23 @@ end loop</dataString>
     </wire>
     <wire>
       <p1 x="-220" y="360"/>
-      <p2 x="-220" y="1060"/>
+      <p2 x="-220" y="1100"/>
     </wire>
     <wire>
-      <p1 x="-220" y="1060"/>
-      <p2 x="-220" y="1160"/>
+      <p1 x="-220" y="1100"/>
+      <p2 x="-220" y="1200"/>
     </wire>
     <wire>
       <p1 x="220" y="520"/>
       <p2 x="220" y="880"/>
     </wire>
     <wire>
-      <p1 x="220" y="1080"/>
-      <p2 x="220" y="1100"/>
+      <p1 x="220" y="1120"/>
+      <p2 x="220" y="1140"/>
     </wire>
     <wire>
-      <p1 x="220" y="1180"/>
-      <p2 x="220" y="1200"/>
+      <p1 x="220" y="1220"/>
+      <p2 x="220" y="1240"/>
     </wire>
     <wire>
       <p1 x="480" y="360"/>
@@ -1610,12 +1704,12 @@ end loop</dataString>
       <p2 x="480" y="580"/>
     </wire>
     <wire>
-      <p1 x="160" y="1080"/>
-      <p2 x="160" y="1100"/>
+      <p1 x="160" y="1120"/>
+      <p2 x="160" y="1140"/>
     </wire>
     <wire>
-      <p1 x="160" y="1180"/>
-      <p2 x="160" y="1200"/>
+      <p1 x="160" y="1220"/>
+      <p2 x="160" y="1240"/>
     </wire>
     <wire>
       <p1 x="-100" y="520"/>
@@ -1630,52 +1724,52 @@ end loop</dataString>
       <p2 x="100" y="660"/>
     </wire>
     <wire>
+      <p1 x="100" y="1160"/>
+      <p2 x="100" y="1180"/>
+    </wire>
+    <wire>
+      <p1 x="100" y="1060"/>
+      <p2 x="100" y="1080"/>
+    </wire>
+    <wire>
       <p1 x="100" y="1120"/>
       <p2 x="100" y="1140"/>
     </wire>
     <wire>
-      <p1 x="100" y="1020"/>
-      <p2 x="100" y="1040"/>
+      <p1 x="100" y="1220"/>
+      <p2 x="100" y="1240"/>
     </wire>
     <wire>
-      <p1 x="100" y="1080"/>
-      <p2 x="100" y="1100"/>
+      <p1 x="-40" y="1120"/>
+      <p2 x="-40" y="1140"/>
     </wire>
     <wire>
-      <p1 x="100" y="1180"/>
-      <p2 x="100" y="1200"/>
-    </wire>
-    <wire>
-      <p1 x="-40" y="1080"/>
-      <p2 x="-40" y="1100"/>
-    </wire>
-    <wire>
-      <p1 x="-40" y="1180"/>
-      <p2 x="-40" y="1200"/>
+      <p1 x="-40" y="1220"/>
+      <p2 x="-40" y="1240"/>
     </wire>
     <wire>
       <p1 x="40" y="740"/>
       <p2 x="40" y="800"/>
     </wire>
     <wire>
-      <p1 x="40" y="1080"/>
-      <p2 x="40" y="1100"/>
+      <p1 x="40" y="1120"/>
+      <p2 x="40" y="1140"/>
     </wire>
     <wire>
-      <p1 x="40" y="1180"/>
-      <p2 x="40" y="1200"/>
+      <p1 x="40" y="1220"/>
+      <p2 x="40" y="1240"/>
     </wire>
     <wire>
       <p1 x="620" y="320"/>
       <p2 x="620" y="600"/>
     </wire>
     <wire>
-      <p1 x="620" y="1020"/>
-      <p2 x="620" y="1060"/>
+      <p1 x="620" y="1060"/>
+      <p2 x="620" y="1100"/>
     </wire>
     <wire>
-      <p1 x="620" y="1080"/>
-      <p2 x="620" y="1120"/>
+      <p1 x="620" y="1120"/>
+      <p2 x="620" y="1160"/>
     </wire>
     <wire>
       <p1 x="620" y="600"/>
@@ -1690,36 +1784,36 @@ end loop</dataString>
       <p2 x="240" y="600"/>
     </wire>
     <wire>
-      <p1 x="240" y="1080"/>
-      <p2 x="240" y="1100"/>
+      <p1 x="240" y="1120"/>
+      <p2 x="240" y="1140"/>
     </wire>
     <wire>
-      <p1 x="240" y="1180"/>
-      <p2 x="240" y="1200"/>
+      <p1 x="240" y="1220"/>
+      <p2 x="240" y="1240"/>
     </wire>
     <wire>
       <p1 x="180" y="600"/>
       <p2 x="180" y="920"/>
     </wire>
     <wire>
-      <p1 x="180" y="1080"/>
-      <p2 x="180" y="1100"/>
+      <p1 x="180" y="1120"/>
+      <p2 x="180" y="1140"/>
     </wire>
     <wire>
-      <p1 x="180" y="1180"/>
-      <p2 x="180" y="1200"/>
+      <p1 x="180" y="1220"/>
+      <p2 x="180" y="1240"/>
     </wire>
     <wire>
       <p1 x="120" y="740"/>
       <p2 x="120" y="780"/>
     </wire>
     <wire>
-      <p1 x="120" y="1080"/>
-      <p2 x="120" y="1100"/>
+      <p1 x="120" y="1120"/>
+      <p2 x="120" y="1140"/>
     </wire>
     <wire>
-      <p1 x="120" y="1180"/>
-      <p2 x="120" y="1200"/>
+      <p1 x="120" y="1220"/>
+      <p2 x="120" y="1240"/>
     </wire>
     <wire>
       <p1 x="-60" y="440"/>
@@ -1730,12 +1824,12 @@ end loop</dataString>
       <p2 x="-60" y="800"/>
     </wire>
     <wire>
-      <p1 x="-60" y="1080"/>
-      <p2 x="-60" y="1100"/>
+      <p1 x="-60" y="1120"/>
+      <p2 x="-60" y="1140"/>
     </wire>
     <wire>
-      <p1 x="-60" y="1180"/>
-      <p2 x="-60" y="1200"/>
+      <p1 x="-60" y="1220"/>
+      <p2 x="-60" y="1240"/>
     </wire>
     <wire>
       <p1 x="1020" y="20"/>
@@ -1754,16 +1848,20 @@ end loop</dataString>
       <p2 x="1020" y="660"/>
     </wire>
     <wire>
+      <p1 x="1020" y="860"/>
+      <p2 x="1020" y="980"/>
+    </wire>
+    <wire>
       <p1 x="60" y="440"/>
       <p2 x="60" y="660"/>
     </wire>
     <wire>
-      <p1 x="60" y="1080"/>
-      <p2 x="60" y="1100"/>
+      <p1 x="60" y="1120"/>
+      <p2 x="60" y="1140"/>
     </wire>
     <wire>
-      <p1 x="60" y="1180"/>
-      <p2 x="60" y="1200"/>
+      <p1 x="60" y="1220"/>
+      <p2 x="60" y="1240"/>
     </wire>
   </wires>
   <measurementOrdering/>
