@@ -17,3 +17,4 @@ Doing this properly is important for the assignments. Ask your tutor during your
 * [Lab 5: Automatic CPU](./lab5)
 * [Lab 6: Conditional Execution](https://cs.anu.edu.au/courses/engn2219/labs/06-cpu-adv/) (no lab folder; continue in lab 5 folder)
 * [Lab 7: Assembly](./lab7)
+* [Lab 8: C Introduction](./lab8)
